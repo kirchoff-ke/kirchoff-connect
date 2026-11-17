@@ -1,0 +1,10 @@
+{
+  "name": "KIRCHHOFF CONNECT CBE School Analytics",
+  "short_name": "KIRCHHOFF CONNECT",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f6fa",
+  "theme_color": "#123b67",
+  "description": "Offline CBE assessment and analytics for Kalokol Mixed Junior School"
+}

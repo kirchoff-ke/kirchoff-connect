@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#123b67">
+<title>KIRCHHOFF CONNECT | CBE School Analytics</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div><div class="schoolname" id="schoolHeader">KALOKOL MIXED JUNIOR SCHOOL</div><h1>KIRCHHOFF CONNECT</h1><div class="tagline">CBE ASSESSMENT &amp; ANALYTICS</div></div>
+  <div class="top-actions"><span class="offline"><i></i> Offline-ready</span><button class="light" id="backupBtn">Backup</button></div>
+</header>
+<div class="app-shell">
+<aside class="sidebar">
+  <button class="nav active" data-view="dashboard"><span>▦</span> Dashboard</button>
+  <button class="nav" data-view="learners"><span>♙</span> Learners</button>
+  <button class="nav" data-view="assessments"><span>✎</span> Assessment entry</button>
+  <button class="nav" data-view="reports"><span>▤</span> Learner reports</button>
+  <button class="nav" data-view="analytics"><span>▥</span> Class analytics</button>
+  <button class="nav" data-view="settings"><span>⚙</span> School &amp; grading</button>
+  <div class="side-note"><b>Offline school workspace</b><p>Records are stored in this browser on this device. Make regular backups.</p></div>
+</aside>
+<main id="main">
+<section class="view active" id="view-dashboard">
+  <div class="page-head"><div><div class="eyebrow">SCHOOL OVERVIEW</div><h2>Dashboard</h2><p>Welcome to your CBE assessment workspace.</p></div><span class="chip">Grades 7–9</span></div>
+  <div class="stats">
+    <article><label>Total learners</label><strong id="dashLearners">0</strong><small>Registered in the system</small></article>
+    <article><label>Assessment records</label><strong id="dashAssessments">0</strong><small>Marks entered</small></article>
+    <article><label>Learning areas</label><strong>9</strong><small>Junior School curriculum</small></article>
+    <article><label>Achievement levels</label><strong>8</strong><small>EE1 to BE2</small></article>
+  </div>
+  <div class="two-col">
+    <div class="panel"><div class="panel-head"><h3>Quick actions</h3></div><div class="quick-actions">
+      <button class="quick" data-go="learners"><b>＋</b><span><strong>Register learner</strong><small>Add a learner to the school register</small></span></button>
+      <button class="quick" data-go="assessments"><b>✎</b><span><strong>Enter assessment</strong><small>Record formative or summative marks</small></span></button>
+      <button class="quick" data-go="reports"><b>▤</b><span><strong>Prepare report</strong><small>View and print learner reports</small></span></button>
+    </div></div>
+    <div class="panel"><div class="panel-head"><h3>Learning areas</h3></div><div id="areaSummary" class="area-list"></div></div>
+  </div>
+  <div class="notice"><b>Grading setup required</b><p>Achievement labels are ready. Enter your school's approved score boundaries under <b>School &amp; grading</b> before the system assigns EE1–BE2 automatically. No unverified cut-offs have been assumed.</p></div>
+</section>
+
+<section class="view" id="view-learners">
+  <div class="page-head"><div><div class="eyebrow">SCHOOL REGISTER</div><h2>Learner management</h2><p>Use Assessment Number as the learner identifier.</p></div><button class="primary" id="newLearnerBtn">＋ Add learner</button></div>
+  <div class="panel">
+    <div class="toolbar"><input id="learnerSearch" placeholder="Search name or Assessment Number"><select id="learnerGrade"><option value="">All grades</option><option>Grade 7</option><option>Grade 8</option><option>Grade 9</option></select></div>
+    <div class="table-wrap"><table><thead><tr><th>Assessment Number</th><th>Learner name</th><th>Grade</th><th>Gender</th><th>Actions</th></tr></thead><tbody id="learnerRows"><tr><td colspan="5" class="empty">No learners registered yet.</td></tr></tbody></table></div>
+  </div>
+</section>
+
+<section class="view" id="view-assessments">
+  <div class="page-head"><div><div class="eyebrow">MARKS REGISTER</div><h2>Assessment entry</h2><p>Record formative and summative assessments by learning area.</p></div></div>
+  <div class="panel">
+    <form id="assessmentForm" class="form-grid">
+      <label>Learner<select id="aLearner" required><option value="">Select learner</option></select></label>
+      <label>Term<select id="aTerm"><option>Term 1</option><option>Term 2</option><option>Term 3</option></select></label>
+      <label>Year<input id="aYear" type="number" min="2020" max="2100" required></label>
+      <label>Assessment type<select id="aType"><option>Formative</option><option>Summative</option></select></label>
+      <label>Learning area<select id="aArea" required></select></label>
+      <label>Assessment name<input id="aName" placeholder="e.g. CAT 1, Project, End-term" required></label>
+      <label>Score obtained<input id="aScore" type="number" min="0" step="any" required></label>
+      <label>Maximum score<input id="aMax" type="number" min="0.01" step="any" value="100" required></label>
+      <div class="form-actions"><button class="primary" type="submit">Save assessment</button><button type="reset" class="secondary">Clear</button></div>
+    </form>
+  </div>
+  <div class="panel"><div class="panel-head"><h3>Recent assessment records</h3></div><div class="table-wrap"><table><thead><tr><th>Learner</th><th>Grade</th><th>Term / Year</th><th>Learning area</th><th>Type</th><th>Score</th><th>Level</th><th></th></tr></thead><tbody id="assessmentRows"><tr><td colspan="8" class="empty">No assessment records yet.</td></tr></tbody></table></div></div>
+</section>
+
+<section class="view" id="view-reports">
+  <div class="page-head"><div><div class="eyebrow">LEARNER PERFORMANCE</div><h2>Learning reports</h2><p>Generate an individual report for a learner, term and year.</p></div></div>
+  <div class="panel">
+    <div class="toolbar report-toolbar"><label>Learner<select id="rLearner"><option value="">Select learner</option></select></label><label>Term<select id="rTerm"><option>Term 1</option><option>Term 2</option><option>Term 3</option></select></label><label>Year<input id="rYear" type="number" min="2020" max="2100"></label><button class="primary" id="makeReport">Generate report</button></div>
+    <div id="reportOutput" class="report-output"><div class="empty">Choose a learner, term and year, then generate the report.</div></div>
+  </div>
+</section>
+
+<section class="view" id="view-analytics">
+  <div class="page-head"><div><div class="eyebrow">PERFORMANCE REVIEW</div><h2>Class analytics</h2><p>Review assessment coverage and achievement by grade.</p></div></div>
+  <div class="panel"><div class="toolbar"><label>Grade<select id="analyticsGrade"><option>Grade 7</option><option>Grade 8</option><option>Grade 9</option></select></label><label>Term<select id="analyticsTerm"><option>All terms</option><option>Term 1</option><option>Term 2</option><option>Term 3</option></select></label><label>Year<input id="analyticsYear" type="number" min="2020" max="2100"></label><button class="primary" id="refreshAnalytics">Analyse</button></div><div id="analyticsOutput"></div></div>
+</section>
+
+<section class="view" id="view-settings">
+  <div class="page-head"><div><div class="eyebrow">CONFIGURATION</div><h2>School &amp; grading settings</h2><p>Set school identity and the approved eight-point rubric.</p></div></div>
+  <div class="panel">
+    <h3>School details</h3>
+    <form id="schoolForm" class="form-grid">
+      <label>School name<input id="schoolName" value="Kalokol Mixed Junior School" required></label>
+      <label>School phone / contact<input id="schoolContact" placeholder="Optional"></label>
+      <label>Postal address<input id="schoolAddress" placeholder="Optional"></label>
+      <div class="form-actions"><button class="primary">Save school details</button></div>
+    </form>
+  </div>
+  <div class="panel">
+    <h3>Approved CBE score boundaries</h3>
+    <p class="muted">Enter the minimum percentage for each level, from highest to lowest. These values must come from the rubric approved for your school. The application will validate that all eight ranges are complete and non-overlapping.</p>
+    <form id="rubricForm">
+      <div class="rubric-grid" id="rubricInputs"></div>
+      <div class="form-actions"><button class="primary">Save grading rubric</button><button type="button" class="secondary" id="clearRubric">Clear boundaries</button></div>
+      <div id="rubricStatus" class="helper">Rubric not configured. Automatic achievement-level assignment is disabled.</div>
+    </form>
+  </div>
+  <div class="panel"><h3>Data management</h3><p class="muted">Download a full JSON backup and import it on another device. Keep backup files in a safe location.</p><div class="button-row"><button class="primary" id="exportBtn">Export backup</button><label class="secondary file-button">Import backup<input type="file" id="importFile" accept="application/json"></label></div></div>
+</section>
+</main>
+</div>
+<div class="modal-backdrop" id="learnerModal" hidden>
+  <form class="modal" id="learnerForm">
+    <div class="modal-head"><div><div class="eyebrow">SCHOOL REGISTER</div><h2 id="learnerModalTitle">Register learner</h2></div><button type="button" class="icon-button" id="closeLearner">×</button></div>
+    <input type="hidden" id="editLearnerId">
+    <label>Assessment Number<input id="lNumber" required maxlength="40"></label>
+    <label>Full learner name<input id="lName" required maxlength="120"></label>
+    <div class="form-grid two">
+      <label>Grade<select id="lGrade"><option>Grade 7</option><option>Grade 8</option><option>Grade 9</option></select></label>
+      <label>Gender<select id="lGender"><option value="">Select</option><option>Male</option><option>Female</option></select></label>
+    </div>
+    <label>Parent / guardian name (optional)<input id="lGuardian"></label>
+    <label>Parent / guardian contact (optional)<input id="lContact"></label>
+    <div class="form-actions"><button class="primary">Save learner</button><button type="button" class="secondary" id="cancelLearner">Cancel</button></div>
+  </form>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<footer>© <span id="year"></span> KIRCHHOFF CONNECT · Kalokol Mixed Junior School</footer>
+<script src="app.js"></script>
+</body></html>
