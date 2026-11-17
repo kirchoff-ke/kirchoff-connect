@@ -66,13 +66,13 @@
       <div class="form-actions"><button class="primary" type="submit">Save assessment</button><button type="reset" class="secondary">Clear</button></div>
     </form>
   </div>
-  <div class="panel"><div class="panel-head"><h3>Recent assessment records</h3></div><div class="table-wrap"><table><thead><tr><th>Learner</th><th>Grade</th><th>Term / Year</th><th>Learning area</th><th>Type</th><th>Score</th><th>Level</th><th></th></tr></thead><tbody id="assessmentRows"><tr><td colspan="8" class="empty">No assessment records yet.</td></tr></tbody></table></div></div>
+  <div class="panel"><div class="panel-head"><h3>Recent assessment records</h3></div><div class="table-wrap"><table><thead><tr><th>Learner</th><th>Grade</th><th>Term / Year</th><th>Learning area</th><th>Type</th><th>Score</th><th>Level</th><th>Points</th><th></th></tr></thead><tbody id="assessmentRows"><tr><td colspan="8" class="empty">No assessment records yet.</td></tr></tbody></table></div></div>
 </section>
 
 <section class="view" id="view-reports">
   <div class="page-head"><div><div class="eyebrow">LEARNER PERFORMANCE</div><h2>Learning reports</h2><p>Generate an individual report for a learner, term and year.</p></div></div>
   <div class="panel">
-    <div class="toolbar report-toolbar"><label>Learner<select id="rLearner"><option value="">Select learner</option></select></label><label>Term<select id="rTerm"><option>Term 1</option><option>Term 2</option><option>Term 3</option></select></label><label>Year<input id="rYear" type="number" min="2020" max="2100"></label><button class="primary" id="makeReport">Generate report</button></div>
+    <div class="toolbar report-toolbar"><label>Grade<select id="rGrade"><option value="">Choose grade</option><option>Grade 7</option><option>Grade 8</option><option>Grade 9</option></select></label><label>Learner<select id="rLearner"><option value="">Select learner</option></select></label><label>Term<select id="rTerm"><option>Term 1</option><option>Term 2</option><option>Term 3</option></select></label><label>Year<input id="rYear" type="number" min="2020" max="2100"></label><button class="primary" id="makeReport">Preview single report</button><button class="secondary" id="makeGradeReports">Preview all reports in grade</button></div>
     <div id="reportOutput" class="report-output"><div class="empty">Choose a learner, term and year, then generate the report.</div></div>
   </div>
 </section>
@@ -88,9 +88,18 @@
     <h3>School details</h3>
     <form id="schoolForm" class="form-grid">
       <label>School name<input id="schoolName" value="Kalokol Mixed Junior School" required></label>
-      <label>School phone / contact<input id="schoolContact" placeholder="Optional"></label>
-      <label>Postal address<input id="schoolAddress" placeholder="Optional"></label>
-      <div class="form-actions"><button class="primary">Save school details</button></div>
+      <label>School email<input id="schoolEmail" type="email" value="kalokolmixedpry@gmail.com"></label>
+      <label>School phone<input id="schoolContact" value="+254143964859"></label>
+      <label>Postal address<input id="schoolAddress" value="P.O. Box 26-30500, LODWAR-KENYA"></label>
+      <label>Term opening date<input id="openingDate" type="date"></label>
+      <label>Term closing date<input id="closingDate" type="date"></label>
+      <label>Class teacher's name<input id="classTeacherName" placeholder="Enter class teacher's full name"></label>
+      <label>Head teacher's name<input id="headTeacherName" placeholder="Enter head teacher's full name"></label>
+      <div class="upload-field"><label>School logo (upload image)<input id="schoolLogoFile" type="file" accept="image/*"></label><img id="schoolLogoPreview" class="asset-preview" alt="School logo preview"></div>
+      <div class="upload-field"><label>Official school rubber stamp (upload image)<input id="schoolStampFile" type="file" accept="image/*"></label><img id="schoolStampPreview" class="asset-preview" alt="School stamp preview"></div>
+      <div class="upload-field"><label>Class teacher signature (upload image)<input id="classTeacherSignatureFile" type="file" accept="image/*"></label><img id="classTeacherSignaturePreview" class="asset-preview" alt="Class teacher signature preview"></div>
+      <div class="upload-field"><label>Head teacher signature (upload image)<input id="headTeacherSignatureFile" type="file" accept="image/*"></label><img id="headTeacherSignaturePreview" class="asset-preview" alt="Head teacher signature preview"></div>
+      <div class="form-actions"><button class="primary">Save school and report details</button></div>
     </form>
   </div>
   <div class="panel">
